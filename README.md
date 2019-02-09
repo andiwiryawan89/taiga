@@ -20,7 +20,10 @@ ENV TAIGA_PUBLIC True
 
     $> Change file on taiga-file/local.py
 
+## How to Build image taiga
+
+    $> $> docker build --rm -t [image_name] .
+
 ## How To run:
 
-    $> docker build --rm -t andiwiryawan/taiga .
-    $> docker run -d -ti --name taiga -p 80:80 -p 8080:8080 -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
+    $> docker-compose up -d --build
