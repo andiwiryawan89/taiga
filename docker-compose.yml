@@ -18,6 +18,7 @@ services:
  #     - /home/docker/static:/home/taiga/static
     networks:
       - taiga
+    tty: true
   postgres:
     image: postgres:10
     user: root
@@ -26,8 +27,8 @@ services:
       POSTGRES_USER: taiga
       POSTGRES_PASSWORD: DBPassword
       POSTGRES_CONFIG_shared_buffers: 512MB
-    ports:
-      - 5432
+#    ports:
+#      - 5432
 #    volumes:
       # Postgres data directory. This ensures the database is not lost.
 #      - /home/docker/pgdata:/var/lib/postgresql/data
