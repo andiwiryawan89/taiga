@@ -1,0 +1,51 @@
+version: '3'
+services:
+  taiga:
+    build: .
+    ports:
+      - 80:80
+      - 8080:8080
+    depends_on:
+      - rabbit
+      - redis
+      - postgres
+    environment:
+      TAIGA_HOST: image.teamcode.work
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+ #     - /home/docker/media:/home/taiga/media
+ #     - /home/docker/static:/home/taiga/static
+    networks:
+      - taiga
+  postgres:
+    image: andiwiryawan/taiga-postgres
+    environment:
+      POSTGRES_DB: taiga
+      POSTGRES_USER: taiga
+      POSTGRES_PASSWORD: DBPassword
+      POSTGRES_CONFIG_shared_buffers: 512MB
+    ports:
+      - 5432
+    volumes:
+      # Postgres data directory. This ensures the database is not lost.
+#      - /home/docker/pgdata:/var/lib/postgresql/data
+    networks:
+      - taiga
+    depends_on:
+      - rabbit
+      - redis
+  rabbit:
+    image: rabbitmq:3
+    hostname: rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: taiga
+      RABBITMQ_DEFAULT_PASS: StrongMQPassword
+      RABBITMQ_DEFAULT_VHOST: taiga
+    networks:
+      - taiga
+  redis:
+    image: redis:3
+    networks:
+      - taiga
+networks:
+  taiga:
