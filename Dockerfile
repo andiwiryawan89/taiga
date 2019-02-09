@@ -25,8 +25,9 @@ RUN yum -y install postgresql10-server postgresql10-contrib postgresql10
 RUN yum -y install gcc autoconf flex bison libjpeg-turbo-devel freetype-devel zlib-devel zeromq3-devel gdbm-devel ncurses-devel automake libtool libffi-devel curl git tmux libxml2-devel libxslt-devel openssl-devel gcc-c++ sudo
 RUN yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y install python36u python36u-libs python36u-devel python36u-pip which nodejs nginx git redis erlang
-RUN rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
-RUN yum -y install https://dl.bintray.com/rabbitmq/rabbitmq-server-rpm/rabbitmq-server-3.6.12-1.el7.noarch.rpm
+RUN rpm --import https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey
+RUN rpm --import https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+RUN yum -y install https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.11/rabbitmq-server-3.7.11-1.el7.noarch.rpm
 RUN npm install -g coffee-script gulp
 RUN python3.6 -m ensurepip
 RUN pip3.6 install --upgrade setuptools pip
