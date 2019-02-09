@@ -62,8 +62,8 @@ COPY nginx.conf nginx.conf
 
 WORKDIR /home/taiga
 COPY install.sh install.sh
+RUN chmod +x install.sh
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
 VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static", "/var/lib/pgsql/10/data" ]
-ENTRYPOINT [ "sh", "install.sh" ]
-CMD ["/usr/sbin/init"]
+CMD ["sh","-c", "/usr/sbin/init && ./install.sh"]
