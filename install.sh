@@ -1,7 +1,7 @@
 #!/bin/bash
-HOST = $1
-DEBUG = $2
-PUBLIC  = $3
+HOST = "$1"
+DEBUG = "$2"
+PUBLIC  = "$3"
 cd /home/taiga/
 if [ ! -e setup.txt ]; then
     touch setup.txt
@@ -14,9 +14,9 @@ if [ ! -e setup.txt ]; then
     cd /home/taiga/taiga-back
     sudo su
     pip3.6 install -r requirements.txt
-    sed -i "s/TAIGA_HOST/${HOST}/g" ./settings/local.py
-    sed -i "s/TAIGA_DEBUG/${DEBUG}/g" ./settings/local.py
-    sed -i "s/TAIGA_PUBLIC/${PUBLIC}/g" ./settings/local.py
+    sed -i "s/TAIGA_HOST/$HOST/g" ./settings/local.py
+    sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
+    sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.py
     python3.6 manage.py migrate --noinput
     python3.6 manage.py loaddata initial_user
     python3.6 manage.py loaddata initial_project_templates
