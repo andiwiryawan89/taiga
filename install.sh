@@ -27,7 +27,5 @@ if [ ! -e setup.txt ]; then
     sed -i "s/TAIGA_HOST/$HOST/g" ./dist/conf.json
     cd /etc/nginx/
     sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
-    systemctl restart nginx
-    systemctl start circus
 fi
 cd /home/taiga/

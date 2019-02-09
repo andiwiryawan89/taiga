@@ -51,6 +51,7 @@ RUN systemctl enable circus && systemctl enable nginx
 
 WORKDIR /etc/nginx/
 COPY nginx.conf nginx.conf
+RUN systemctl restart nginx
 
 WORKDIR /home/taiga
 RUN yum install -y gettext

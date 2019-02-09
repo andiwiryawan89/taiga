@@ -18,14 +18,14 @@
 
 from kombu import Queue
 
-broker_url = 'amqp://guest:guest@rabbit:5672//'
+broker_url = 'amqp://taiga:StrongMQPassword@rabbit:5672/taiga'
 result_backend = 'redis://redis:6379/0'
 
 accept_content = ['pickle',] # Values are 'pickle', 'json', 'msgpack' and 'yaml'
 task_serializer = "pickle"
 result_serializer = "pickle"
 
-timezone = 'Europe/Madrid'
+timezone = 'Asia/Jakarta'
 
 task_default_queue = 'tasks'
 task_queues = (
