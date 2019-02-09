@@ -21,7 +21,6 @@ if [ ! -e setup.txt ]; then
     sed -i "s/TAIGA_HOST/$HOST/g" ./settings/local.py
     sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
     sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.py
-    sudo su taiga
     python3.6 manage.py migrate --noinput
     python3.6 manage.py loaddata initial_user
     python3.6 manage.py loaddata initial_project_templates
