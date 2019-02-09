@@ -59,5 +59,5 @@ RUN chmod +x install.sh
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
 VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static" ]
-ENTRYPOINT ["./install.sh"]
-CMD ["/usr/sbin/init"]
+#ENTRYPOINT ["./install.sh"]
+CMD ["./install.sh"]
