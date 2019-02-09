@@ -23,12 +23,14 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 RUN yum -y install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
 RUN yum -y install postgresql10-server postgresql10-contrib postgresql10 
 RUN yum -y install gcc autoconf flex bison libjpeg-turbo-devel freetype-devel zlib-devel zeromq3-devel gdbm-devel ncurses-devel automake libtool libffi-devel curl git tmux libxml2-devel libxslt-devel openssl-devel gcc-c++ sudo
+RUN yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum -y install python36u python36u-libs python36u-devel python36u-pip which nodejs nginx git redis erlang
 RUN rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 RUN yum -y install https://dl.bintray.com/rabbitmq/rabbitmq-server-rpm/rabbitmq-server-3.6.12-1.el7.noarch.rpm
 RUN npm install -g coffee-script gulp
-RUN pip install --upgrade setuptools pip
-RUN pip install virtualenv virtualenvwrapper circus
+RUN python3.6 -m ensurepip
+RUN pip3.6 install --upgrade setuptools pip
+RUN pip3.6 install virtualenv virtualenvwrapper circus
 
 RUN useradd taiga \
     && echo "taiga ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
