@@ -15,10 +15,9 @@ RUN pip3 install virtualenv virtualenvwrapper
 WORKDIR /home/taiga
 USER taiga
 RUN git clone https://github.com/taigaio/taiga-back.git taiga-back
-RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
-    && echo "source /usr/bin/virtualenvwrapper.sh" >> .bashrc
+RUN echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3'" >> .bashrc \
+    && echo "source /bin/virtualenvwrapper.sh" >> .bashrc
 RUN /bin/bash --login -c "source .bashrc && mkvirtualenv -p /usr/bin/python3 taiga"
-#RUN /bin/bash --login -c "mkvirtualenv -p /usr/bin/python3 taiga"
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
 USER root
