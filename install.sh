@@ -16,11 +16,11 @@ if [ ! -e setup.txt ]; then
     sed -i "s/TAIGA_HOST/${HOST}/g" ./settings/local.py
     sed -i "s/TAIGA_DEBUG/${DEBUG}/g" ./settings/local.py
     sed -i "s/TAIGA_PUBLIC/${PUBLIC}/g" ./settings/local.py
-    python3.6 manage.py migrate --noinput
-    python3.6 manage.py loaddata initial_user
-    python3.6 manage.py loaddata initial_project_templates
-    python3.6 manage.py compilemessages
-    python3.6 manage.py collectstatic --noinput
+#    python3.6 manage.py migrate --noinput
+#    python3.6 manage.py loaddata initial_user
+#    python3.6 manage.py loaddata initial_project_templates
+#    python3.6 manage.py compilemessages
+#    python3.6 manage.py collectstatic --noinput
     cd /home/taiga/taiga-front-dist
     sed -i "s/TAIGA_HOST/${HOST}/g" ./dist/conf.json
     cd /etc/nginx/

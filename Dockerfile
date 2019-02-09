@@ -54,6 +54,6 @@ COPY install.sh install.sh
 RUN chmod +x install.sh
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
-VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static", "/var/lib/pgsql/10/data" ]
+VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static" ]
 ENTRYPOINT ["./install.sh", "${TAIGA_HOST}", "${TAIGA_DEBUG}", "${TAIGA_PUBLIC}"]
 CMD ["/usr/sbin/init"]
