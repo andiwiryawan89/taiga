@@ -6,6 +6,10 @@ cd /home/taiga/
 if [ ! -e setup.txt ]; then
     touch setup.txt
     chown -hR taiga:taiga /home/taiga
+    cd /home/taiga/taiga-front-dist
+    sed -i "s/TAIGA_HOST/$HOST/g" ./dist/conf.json
+    cd /etc/nginx/
+    sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
     sudo su taiga
     echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3.6'" >> .bashrc
     echo "source /usr/bin/virtualenvwrapper.sh" >> .bashrc
@@ -23,9 +27,5 @@ if [ ! -e setup.txt ]; then
     python3.6 manage.py loaddata initial_project_templates
     python3.6 manage.py compilemessages
     python3.6 manage.py collectstatic --noinput
-    cd /home/taiga/taiga-front-dist
-    sed -i "s/TAIGA_HOST/$HOST/g" ./dist/conf.json
-    cd /etc/nginx/
-    sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
 fi
 cd /home/taiga/
