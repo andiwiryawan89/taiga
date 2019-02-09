@@ -10,7 +10,7 @@ RUN apt-get install -y python3 python3-pip python-dev python3-dev python-pip vir
 
 RUN adduser --disabled-password --gecos "" taiga \
     && adduser taiga sudo
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 USER taiga
 WORKDIR /home/taiga
 RUN git clone https://github.com/taigaio/taiga-back.git taiga-back
@@ -21,7 +21,7 @@ RUN git checkout stable
 #    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc \
 #    && source .bashrc
 #RUN mkvirtualenv -p /usr/bin/python3 taiga
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 COPY install.sh install.sh
 RUN chmod +x install.sh
 ENTRYPOINT [ "./install.sh" ]
