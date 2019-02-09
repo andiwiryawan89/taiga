@@ -1,3 +1,4 @@
+#https://github.com/andiwiryawan89/taiga.git
 FROM centos:7
 
 ENV PGDATA /var/lib/pgsql/10/data
@@ -26,8 +27,8 @@ RUN yum -y install python36u python36u-libs python36u-devel python36u-pip which 
 RUN rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
 RUN yum -y install https://dl.bintray.com/rabbitmq/rabbitmq-server-rpm/rabbitmq-server-3.6.12-1.el7.noarch.rpm
 RUN npm install -g coffee-script gulp
-RUN pip3.6 install --upgrade setuptools pip
-RUN pip3.6 install virtualenv virtualenvwrapper circus
+RUN pip install --upgrade setuptools pip
+RUN pip install virtualenv virtualenvwrapper circus
 
 RUN useradd taiga \
     && echo "taiga ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

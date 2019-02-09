@@ -18,7 +18,7 @@ if [ ! -e dbsetup.txt ]; then
     sudo -u taiga source .bashrc
     cd /home/taiga/taiga-back
     mkvirtualenv -p /bin/python3.6 taiga
-    pip3.6 install -r requirements.txt
+    pip install -r requirements.txt
     python3.6 manage.py migrate --noinput
     python3.6 manage.py loaddata initial_user
     python3.6 manage.py loaddata initial_project_templates
