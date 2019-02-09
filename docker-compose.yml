@@ -18,7 +18,7 @@ services:
  #     - /home/docker/static:/home/taiga/static
     networks:
       - taiga
-    tty: true
+#    tty: true
     privileged: true
   postgres:
     image: postgres:10
