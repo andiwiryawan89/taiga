@@ -1,5 +1,5 @@
 #https://github.com/andiwiryawan89/taiga.git
-FROM centos:7
+FROM andiwiryawan/centos
 
 ENV PGDATA /var/lib/pgsql/10/data
 ENV TAIGA_HOST localhost
@@ -9,16 +9,6 @@ ENV TAIGA_PUBLIC False
 RUN yum -y update \
     && yum -y install epel-release \
     && yum clean all
-
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
-    systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-    rm -f /lib/systemd/system/multi-user.target.wants/*;\
-    rm -f /etc/systemd/system/*.wants/*;\
-    rm -f /lib/systemd/system/local-fs.target.wants/*; \
-    rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-    rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-    rm -f /lib/systemd/system/basic.target.wants/*;\
-    rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 RUN yum -y install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
 RUN yum -y install postgresql10-server postgresql10-contrib postgresql10 
@@ -66,4 +56,4 @@ RUN chmod +x install.sh
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
 VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static", "/var/lib/pgsql/10/data" ]
-CMD ["sh","-c", "/usr/sbin/init && ./install.sh"]
+CMD ["./install.sh"]
