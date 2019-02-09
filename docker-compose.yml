@@ -5,6 +5,7 @@ services:
     ports:
       - 80:80
       - 8080:8080
+    user: root
     depends_on:
       - rabbit
       - redis
@@ -20,6 +21,7 @@ services:
       - taiga
   postgres:
     image: postgres:10
+    user: root
     environment:
       POSTGRES_DB: taiga
       POSTGRES_USER: taiga
@@ -38,6 +40,7 @@ services:
   rabbit:
     image: rabbitmq:3
     hostname: rabbit
+    user: root
     environment:
       RABBITMQ_DEFAULT_USER: taiga
       RABBITMQ_DEFAULT_PASS: StrongMQPassword
@@ -46,6 +49,7 @@ services:
       - taiga
   redis:
     image: redis:3
+    user: root
     networks:
       - taiga
 networks:
