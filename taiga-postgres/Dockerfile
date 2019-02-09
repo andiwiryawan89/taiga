@@ -12,12 +12,12 @@ RUN adduser --disabled-password --gecos "" taiga \
     && adduser taiga sudo
 RUN pip3 install --upgrade pip
 RUN pip3 install virtualenv virtualenvwrapper
-USER taiga
 WORKDIR /home/taiga
+USER taiga
 RUN git clone https://github.com/taigaio/taiga-back.git taiga-back
-#RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
-#    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc \
-#    && source .bashrc
+RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
+    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc
+RUN source .bashrc
 RUN /bin/bash --login -c "mkvirtualenv -p /usr/bin/python3 taiga"
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
