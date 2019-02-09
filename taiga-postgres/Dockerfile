@@ -20,11 +20,11 @@ RUN echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3.5'" >> .bashrc \
     && echo "WORKON_HOME=/home/taiga/.virtualenvs" >> .bashrc \
     && mkdir .virtualenvs
 RUN /bin/bash --login -c "source .bashrc"
-RUN /bin/bash --login -c "mkvirtualenv -p /bin/python3.5 taiga"
+#RUN mkvirtualenv -p /bin/python3.5 taiga
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
 USER root
 RUN pip3 install -r requirements.txt
 COPY install.sh install.sh
 RUN chmod +x install.sh
-ENTRYPOINT [ "./install.sh" ]
+CMD [ "./install.sh" ]
