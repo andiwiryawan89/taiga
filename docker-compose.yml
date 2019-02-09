@@ -1,7 +1,7 @@
 version: '3'
 services:
   taiga:
-    build: .
+    image: andiwiryawan/taiga
     ports:
       - 80:80
       - 8080:8080

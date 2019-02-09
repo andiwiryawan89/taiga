@@ -33,7 +33,7 @@ RUN git clone https://github.com/taigaio/taiga-front-dist.git taiga-front-dist
 RUN git clone https://github.com/taigaio/taiga-events.git taiga-events
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
-RUN pip3.6 install -r requirements.txt
+#RUN pip3.6 install -r requirements.txt
 COPY local.py settings/local.py
 WORKDIR /home/taiga/taiga-front-dist
 RUN git checkout stable
