@@ -40,7 +40,7 @@ WORKDIR /home/taiga/taiga-front-dist
 RUN git checkout stable
 COPY conf.json dist/conf.json
 WORKDIR /home/taiga/taiga-events
-RUN npm install
+RUN npm --loglevel silent install
 COPY config.json config.json
 
 WORKDIR /etc/
