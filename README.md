@@ -28,4 +28,4 @@ DB_NAME taiga
 
 ## How To run:
 
-    $> docker run -d -ti -p 80:80 -p 8080:8080 -v -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
+    $> docker run -d -ti -p 80:80 -p 8080:8080 -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
