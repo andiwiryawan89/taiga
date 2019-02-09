@@ -1,5 +1,9 @@
 FROM postgres:10
 
+RUN apt-get update -y
+RUN apt-get install -y build-essential binutils-doc autoconf flex bison libjpeg-dev \
+    && apt-get install -y libfreetype6-dev zlib1g-dev libzmq3-dev libgdbm-dev libncurses5-dev \
+    && apt-get install -y automake libtool libffi-dev curl git tmux gettext
 RUN apt-get install -y python3 python3-pip python-dev python3-dev python-pip virtualenvwrapper \
     && apt-get install -y libxml2-dev libxslt-dev \
     && apt-get install -y libssl-dev libffi-dev git
