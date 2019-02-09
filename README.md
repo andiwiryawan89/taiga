@@ -22,7 +22,7 @@ ENV TAIGA_PUBLIC True
 
 ## How to Build image taiga
 
-    $> $> docker build --rm -t [image_name] .
+    $> docker build --rm -t [image_name] .
 
 ## How To run:
 
