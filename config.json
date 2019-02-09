@@ -1,5 +1,5 @@
 {
-    "url": "amqp://taiga:StrongMQPassword@localhost:5672/taiga",
+    "url": "amqp://taiga:StrongMQPassword@rabbit:5672/taiga",
     "secret": "CZfjWjHctPwnLZsDysWqaZcYfRCviHbI4fVRwfhpbtAHPNBtmkcegpwpYjTtEziJ",
     "webSocketServer": {
         "port": 8888

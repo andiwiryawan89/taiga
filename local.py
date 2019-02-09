@@ -16,7 +16,7 @@ DATABASES = {
         'NAME': 'taiga',
         'USER': 'taiga',
         'PASSWORD': 'DBPassword',
-        'HOST': 'localhost',
+        'HOST': 'postgres',
         'PORT': '5432',
     }
 }
@@ -30,7 +30,7 @@ DEFAULT_FROM_EMAIL = "john@due.com"
 CELERY_ENABLED = True
 
 EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
-EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:StrongMQPassword@localhost:5672/taiga"}
+EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:StrongMQPassword@rabbit:5672/taiga"}
 
 # Uncomment and populate with proper connection parameters
 # for enable email sending. EMAIL_HOST_USER should end by @domain.tld
