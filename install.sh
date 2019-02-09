@@ -24,9 +24,9 @@ if [ ! -e setup.txt ]; then
     python3.6 manage.py compilemessages
     python3.6 manage.py collectstatic --noinput
     cd /home/taiga/taiga-front-dist
-    sed -i "s/TAIGA_HOST/${HOST}/g" ./dist/conf.json
+    sed -i "s/TAIGA_HOST/$HOST/g" ./dist/conf.json
     cd /etc/nginx/
-    sed -i "s/TAIGA_HOST/${HOST}/g" ./nginx.conf
+    sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
     sudo su
     systemctl restart nginx
     systemctl start circus
