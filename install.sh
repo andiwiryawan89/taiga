@@ -1,4 +1,5 @@
 #!/bin/bash
+
 HOST = "$1"
 DEBUG = "$2"
 PUBLIC  = "$3"
