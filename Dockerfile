@@ -62,6 +62,6 @@ WORKDIR /home/taiga
 COPY install.sh install.sh
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
-VOLUME [ "/sys/fs/cgroup", "/home/taiga", "/var/lib/pgsql/10/data" ]
+VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static", "/var/lib/pgsql/10/data" ]
 ENTRYPOINT [ "sh", "install.sh" ]
 CMD ["/usr/sbin/init"]

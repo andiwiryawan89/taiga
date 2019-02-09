@@ -16,16 +16,10 @@ ENV TAIGA_DEBUG True
 
 ENV TAIGA_PUBLIC True
 
-DB_USER taiga
-
-DB_PASS DBPassword
-
-DB_NAME taiga
-
 ## Email Setting
 
     $> Change file on taiga-file/local.py
 
 ## How To run:
 
-    $> docker run -d -ti -p 80:80 -p 8080:8080 -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
+    $> docker run -d -ti --name taiga -p 80:80 -p 8080:8080 -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
