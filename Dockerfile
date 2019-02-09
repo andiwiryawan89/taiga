@@ -35,6 +35,7 @@ WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
 #RUN pip3.6 install -r requirements.txt
 COPY local.py settings/local.py
+COPY celery.py settings/celery.py
 WORKDIR /home/taiga/taiga-front-dist
 RUN git checkout stable
 COPY conf.json dist/conf.json
@@ -52,6 +53,7 @@ WORKDIR /etc/nginx/
 COPY nginx.conf nginx.conf
 
 WORKDIR /home/taiga
+RUN yum install -y gettext
 COPY install.sh install.sh
 RUN chmod +x install.sh
 EXPOSE 80 8080
