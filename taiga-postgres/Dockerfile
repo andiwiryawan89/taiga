@@ -18,7 +18,7 @@ RUN git clone https://github.com/taigaio/taiga-back.git taiga-back
 #RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
 #    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc \
 #    && source .bashrc
-RUN mkvirtualenv -p /usr/bin/python3 taiga
+RUN /bin/bash --login -c "mkvirtualenv -p /usr/bin/python3 taiga"
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
 USER root
