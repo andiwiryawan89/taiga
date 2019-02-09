@@ -10,7 +10,7 @@ services:
       - redis
       - postgres
     environment:
-      TAIGA_HOST: image.teamcode.work
+      TAIGA_HOST: taiga.teamcode.work
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
  #     - /home/docker/media:/home/taiga/media
