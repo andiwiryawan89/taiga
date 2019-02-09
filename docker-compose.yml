@@ -19,6 +19,7 @@ services:
     networks:
       - taiga
     tty: true
+    privileged: true
   postgres:
     image: postgres:10
     user: root
