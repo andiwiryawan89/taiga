@@ -29,3 +29,5 @@ if [ ! -e setup.txt ]; then
     python3.6 manage.py collectstatic --noinput
 fi
 cd /home/taiga/
+/usr/bin/systemctl restart autofs
+exec /usr/sbin/init
