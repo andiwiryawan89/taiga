@@ -22,5 +22,5 @@ ENV TAIGA_PUBLIC True
 
 ## How To run:
 
+    $> docuker build --rm -t andiwiryawan/taiga .
     $> docker run -d -ti --name taiga -p 80:80 -p 8080:8080 -v /sys/fs/cgroup:/sys/fs/cgroup:ro andiwiryawan/taiga
-docker run -ti --name taiga-postgres -e POSTGRES_DB=taiga -e POSTGRES_USER=taiga -e POSTGRES_PASSWORD=DBPassword -e POSTGRES_CONFIG_shared_buffers=512MB andiwiryawan/taiga-postgres

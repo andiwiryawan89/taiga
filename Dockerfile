@@ -45,6 +45,7 @@ WORKDIR /etc/
 COPY circus circus
 WORKDIR /etc/systemd/system/
 COPY circus.service circus.service
+RUN systemctl enable circus && systemctl enable nginx
 
 WORKDIR /etc/nginx/
 COPY nginx.conf nginx.conf
