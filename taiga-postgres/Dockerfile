@@ -9,7 +9,7 @@ RUN apt-get install -y python3 python3-pip python-dev python3-dev python-pip vir
     && apt-get install -y libssl-dev libffi-dev git
 
 RUN adduser --disabled-password --gecos "" taiga \
-    adduser taiga sudo
+    && adduser taiga sudo
 RUN pip install --upgrade pip \
     && pip install virtualenv virtualenvwrapper
 USER taiga
