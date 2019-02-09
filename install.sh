@@ -5,6 +5,8 @@ if [ ! -d "${PGDATA}" ]; then
 fi
 if [ ! -e dbsetup.txt ]; then
     touch dbsetup.txt
+    localectl set-locale LANG=en_US.utf8
+    PGDATA=/var/lib/pgsql/10/data
     /usr/pgsql-10/bin/postgresql-10-setup initdb
     systemctl enable postgresql-10
     systemctl start postgresql-10
