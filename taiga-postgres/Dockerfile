@@ -16,11 +16,11 @@ WORKDIR /home/taiga
 RUN git clone https://github.com/taigaio/taiga-back.git taiga-back
 WORKDIR /home/taiga/taiga-back
 RUN git checkout stable
-WORKDIR /home/taiga
-RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
-    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc \
-    && source .bashrc
-RUN mkvirtualenv -p /usr/bin/python3 taiga
+#WORKDIR /home/taiga
+#RUN echo "VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'" >> .bashrc \
+#    && echo "source /usr/local/bin/virtualenvwrapper.sh" >> .bashrc \
+#    && source .bashrc
+#RUN mkvirtualenv -p /usr/bin/python3 taiga
 RUN pip install -r requirements.txt
 COPY install.sh install.sh
 RUN chmod +x install.sh
