@@ -57,6 +57,9 @@ WORKDIR /home/taiga
 RUN yum install -y gettext
 COPY install.sh install.sh
 RUN chmod +x install.sh
+RUN yum install -y sudo
+RUN chown -hR taiga:taiga /home/taiga
+USER taiga
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
 VOLUME [ "/sys/fs/cgroup", "/home/taiga/media", "/home/taiga/static" ]

@@ -10,8 +10,7 @@ if [ ! -e setup.txt ]; then
     cd /etc/nginx/
     sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
     cd /home/taiga
-    chown -hR taiga:taiga /home/taiga
-    su taiga
+    sudo su taiga
     echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3.6'" >> .bashrc
     echo "source /usr/bin/virtualenvwrapper.sh" >> .bashrc
     source .bashrc
