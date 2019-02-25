@@ -23,7 +23,8 @@ RUN python3.6 -m ensurepip
 RUN pip3.6 install --upgrade setuptools pip
 RUN pip3.6 install virtualenv virtualenvwrapper circus
 
-RUN useradd taiga \
+RUN groupadd --gid 1001 taiga
+RUN useradd --uid 1001 --gid 1001 taiga \
     && echo "taiga ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR /home/taiga

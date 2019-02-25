@@ -5,18 +5,18 @@ PUBLIC=${TAIGA_PUBLIC}
 cd /home/taiga/
 if [ ! -e setup.txt ]; then
     touch setup.txt
-    chown -hR taiga:taiga /home/taiga
     cd /home/taiga/taiga-front-dist
     sed -i "s/TAIGA_HOST/$HOST/g" ./dist/conf.json
     cd /etc/nginx/
     sed -i "s/TAIGA_HOST/$HOST/g" ./nginx.conf
+    cd /home/taiga
+    chown -hR taiga:taiga /home/taiga
     sudo su taiga
     echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3.6'" >> .bashrc
     echo "source /usr/bin/virtualenvwrapper.sh" >> .bashrc
     source .bashrc
     mkvirtualenv -p /bin/python3.6 taiga
     cd /home/taiga/taiga-back
-    sudo su
     pip3.6 install -r requirements.txt
     sed -i "s/TAIGA_HOST/$HOST/g" ./settings/local.py
     sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
@@ -26,6 +26,7 @@ if [ ! -e setup.txt ]; then
     python3.6 manage.py loaddata initial_project_templates
     python3.6 manage.py compilemessages
     python3.6 manage.py collectstatic --noinput
+    #sudo su
 fi
 cd /home/taiga/
 exec /usr/sbin/init
