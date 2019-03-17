@@ -24,19 +24,19 @@ if [ ! -e setup.txt ]; then
     # sudo su taiga
     echo "VIRTUALENVWRAPPER_PYTHON='/bin/python3.6'" >> .bashrc
     echo "source /usr/bin/virtualenvwrapper.sh" >> .bashrc
-    sudo -u taiga -i source .bashrc
-    sudo -u taiga -i mkvirtualenv -p /bin/python3.6 taiga
-    cd /home/taiga/taiga-back
+    su taiga -l -c "cd /home/taiga; source .bashrc"
+    su taiga -l -c "cd /home/taiga; mkvirtualenv -p /bin/python3.6 taiga"
     chown -hR taiga:taiga /home/taiga
+    cd /home/taiga/taiga-back
     sed -i "s/TAIGA_HOST/$HOST/g" ./settings/local.py
     sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
     sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.py
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; pip3.6 install -r requirements.txt"
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py migrate --noinput"
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_user"
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_project_templates"
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py compilemessages"
-    sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py collectstatic --noinput"
+    su taiga -l -c "cd /home/taiga/taiga-back; sudo pip3.6 install --user taiga -r requirements.txt"
+    su taiga -l -c "cd /home/taiga/taiga-back; python3.6 manage.py migrate --noinput"
+    su taiga -l -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_user"
+    su taiga -l -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_project_templates"
+    su taiga -l -c "cd /home/taiga/taiga-back; python3.6 manage.py compilemessages"
+    su taiga -l -c "cd /home/taiga/taiga-back; python3.6 manage.py collectstatic --noinput"
     #sudo su
 fi
 cd /home/taiga/
