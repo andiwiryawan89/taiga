@@ -13,8 +13,8 @@ services:
       TAIGA_HOST: taiga.teamcode.work
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-     - /home/docker/media:/home/taiga/media
-     - /home/docker/static:/home/taiga/static
+      - /home/docker/media:/home/taiga/media
+      - /home/docker/static:/home/taiga/static
     networks:
       - taiga
     privileged: true
@@ -28,9 +28,9 @@ services:
       POSTGRES_CONFIG_shared_buffers: 512MB
 #    ports:
 #      - 5432
-#    volumes:
+    volumes:
       # Postgres data directory. This ensures the database is not lost.
-#      - /home/docker/pgdata:/var/lib/postgresql/data
+      - /home/docker/pgdata:/var/lib/postgresql/data
     networks:
       - taiga
     depends_on:
