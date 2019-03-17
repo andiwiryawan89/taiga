@@ -29,14 +29,13 @@ if [ ! -e setup.txt ]; then
     cd /home/taiga/taiga-back
     sed -i "s/TAIGA_HOST/$HOST/g" ./settings/local.py
     sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
-    sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.py
-    sudo -u taiga -i cd /home/taiga/taiga-back
-    sudo -u taiga -i pip3.6 install -r requirements.txt
-    sudo -u taiga -i python3.6 manage.py migrate --noinput
-    sudo -u taiga -i python3.6 manage.py loaddata initial_user
-    sudo -u taiga -i python3.6 manage.py loaddata initial_project_templates
-    sudo -u taiga -i python3.6 manage.py compilemessages
-    sudo -u taiga -i python3.6 manage.py collectstatic --noinput
+    sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.pyk
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; pip3.6 install -r requirements.txt"
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; python3.6 manage.py migrate --noinput"
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_user"
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_project_templates"
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; python3.6 manage.py compilemessages"
+    sudo -u taiga -i bach -c "cd /home/taiga/taiga-back; python3.6 manage.py collectstatic --noinput"
     #sudo su
     chown -hR taiga:taiga /home/taiga
 fi
