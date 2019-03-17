@@ -4,6 +4,8 @@ FROM andiwiryawan/centos
 ENV TAIGA_HOST localhost
 ENV TAIGA_DEBUG False
 ENV TAIGA_PUBLIC False
+ENV USER_UID 0
+ENV USER_GID 0
 
 RUN yum -y update \
     && yum -y install epel-release \
@@ -58,7 +60,6 @@ RUN yum install -y gettext
 COPY install.sh install.sh
 RUN chmod +x install.sh
 RUN yum install -y sudo
-RUN chown -hR taiga:taiga /home/taiga
 USER taiga
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro

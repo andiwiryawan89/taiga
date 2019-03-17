@@ -1,8 +1,8 @@
 from .common import *
 
-MEDIA_URL = "http://TAIGA_HOST/media/"
-STATIC_URL = "http://TAIGA_HOST/static/"
-SITES["front"]["scheme"] = "http"
+MEDIA_URL = "https://TAIGA_HOST/media/"
+STATIC_URL = "https://TAIGA_HOST/static/"
+SITES["front"]["scheme"] = "https"
 SITES["front"]["domain"] = "TAIGA_HOST"
 
 SECRET_KEY = "CZfjWjHctPwnLZsDysWqaZcYfRCviHbI4fVRwfhpbtAHPNBtmkcegpwpYjTtEziJ"
