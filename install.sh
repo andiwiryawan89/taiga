@@ -31,13 +31,13 @@ if [ ! -e setup.txt ]; then
     sed -i "s/TAIGA_DEBUG/$DEBUG/g" ./settings/local.py
     sed -i "s/TAIGA_PUBLIC/$PUBLIC/g" ./settings/local.py
     pip3.6 install -r requirements.txt
+    chown -hR taiga:taiga /home/taiga
     sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py migrate --noinput"
     sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_user"
     sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py loaddata initial_project_templates"
     sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py compilemessages"
     sudo -u taiga -i bash -c "cd /home/taiga/taiga-back; python3.6 manage.py collectstatic --noinput"
     #sudo su
-    chown -hR taiga:taiga /home/taiga
 fi
 cd /home/taiga/
 exec /usr/sbin/init

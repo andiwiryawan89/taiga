@@ -67,9 +67,9 @@ COPY nginx.conf nginx.conf
 
 WORKDIR /home/taiga
 RUN yum install -y gettext
+RUN yum install -y sudo
 COPY install.sh install.sh
 RUN chmod +x install.sh
-RUN yum install -y sudo
 USER taiga
 EXPOSE 80 8080
 #you must run with -v /sys/fs/cgroup:/sys/fs/cgroup:ro
