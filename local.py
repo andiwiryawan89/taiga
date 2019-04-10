@@ -27,7 +27,8 @@ STATIC_ROOT = '/home/taiga/static'
 DEFAULT_FROM_EMAIL = "john@due.com"
 #SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
-CELERY_ENABLED = True
+#CELERY_ENABLED = True
+#CELERY_ALWAYS_EAGER = True
 
 EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
 EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:StrongMQPassword@rabbit:5672/taiga"}

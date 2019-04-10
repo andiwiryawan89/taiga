@@ -27,3 +27,8 @@ ENV TAIGA_PUBLIC True
 ## How To run:
 
     $> docker-compose up -d --build
+
+Timeline update:
+
+python manage.py rebuild_timeline --purge
+python manage.py rebuild_timeline_iterating_per_projects

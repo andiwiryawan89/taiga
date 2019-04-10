@@ -46,10 +46,10 @@ services:
       RABBITMQ_DEFAULT_VHOST: taiga
     networks:
       - taiga
-  redis:
-    image: redis:3
-    user: root
-    networks:
-      - taiga
+  # redis:
+  #   image: redis:3
+  #   user: root
+  #   networks:
+  #     - taiga
 networks:
   taiga:
