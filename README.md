@@ -32,3 +32,5 @@ Timeline update:
 
 python manage.py rebuild_timeline --purge
 python manage.py rebuild_timeline_iterating_per_projects
+pg_dump -U username dbname > data.pgsql
+psql -U username dbname < dbexport.pgsql
